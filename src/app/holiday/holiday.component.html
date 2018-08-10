@@ -1,0 +1,169 @@
+<ngx-spinner></ngx-spinner>
+<div class="col-md-12">
+    <div class="row padd">
+
+        <div class="col-md-5 ">
+            <div class="card-group">
+                <div class="card">
+            <div class="card-body shadow">
+          
+                <form [formGroup] = "package">
+                    <div class="row">
+
+                      <h2>Add New Package</h2>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h6>Title</h6>
+                          <mat-form-field appearance="outline" >
+                              <input matInput placeholder="Enter Title For The Holiday Package" value="" formControlName="title">
+                              <mat-error *ngIf="package.controls.title.hasError('required')">
+                                Title is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                      </div>
+                      <div class="col-md-12">
+                      
+                            <h6>Place</h6>
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <input matInput placeholder="Enter Name of Place" value="" formControlName="place">
+                                <mat-error *ngIf="package.controls.place.hasError('required')">
+                                    No of days is <strong>required</strong>
+                                  </mat-error>
+                            </mat-form-field>
+                      
+                      </div>
+              
+                      <div class="col-md-12">
+                      
+                            <h6>Price</h6>
+                            <mat-form-field appearance="outline">
+                                <input matInput placeholder="Price of the Package" value="" formControlName="price">
+                                <mat-error *ngIf="package.controls.price.hasError('required')">
+                                    Price of Package is <strong>required</strong>
+                                  </mat-error>
+                            </mat-form-field>
+                        </div>
+                      
+                      <div class="col-md-12">
+                      
+                            <h6>Duration</h6>
+                            <mat-form-field appearance="outline" >
+                                <input matInput placeholder="Duration of the Package" value="" formControlName="duration">
+                                <mat-error *ngIf="package.controls.duration.hasError('required')">
+                                    Duration of the Package is <strong>required</strong>
+                                  </mat-error>
+                            </mat-form-field>
+                        </div>
+                  
+                      <div class="col-md-12">
+                      
+                            <h6>Commission</h6>
+                            <mat-form-field appearance="outline" >
+                                <input matInput placeholder="Commission For this Package Booking" value="" formControlName="commission">
+                                <mat-error *ngIf="package.controls.commission.hasError('required')">
+                                    Commission For this Package is <strong>required</strong>
+                                  </mat-error>
+                            </mat-form-field>
+                        </div>
+                    
+                      <div class="col-md-12">
+                    
+                              <h6>PDF Url</h6>
+                              <mat-form-field appearance="outline" >
+                                  <input matInput placeholder="Enter URL of the Package PDF" value="" formControlName="pdf">
+                                  <mat-error *ngIf="package.controls.pdf.hasError('required')">
+                                      Path of file is <strong>required</strong>
+                                    </mat-error>
+                              </mat-form-field>
+                          </div>
+                      
+                    </div>
+                    <div align="left" >
+                        <button type="button" class="btn btn-rounded btn-success mb-5" [disabled]="!package.valid" (click)="save_package_data()">ADD NEW PACKAGE</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 shadow" > 
+            <div class="card" *ngFor="let data of package_data.reverse()">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h4 class="modal-title">Title</h4>
+                        <button type="button" class="btn btn-rounded" style="background-color: #325537; color:#FFFFFF;">View/Edit PACKAGE</button>
+                    </div>
+                    <div class="modal-body">
+                      
+                      <div class="row">
+                        
+                        <div class="col-md-2">
+                            <span class="btn btn-square btn-light ">
+                                Duration:
+                            </span>
+                        </div>
+
+                        <div class="col-md-4">
+                          <span>
+                            {{data.duration}}
+                          </span> 
+                        </div>
+                        
+                        <div class="col-md-2">  
+                          <span class="btn btn-square btn-light">
+                              Place:
+                          </span>
+                        </div>
+
+                        <div class="col-md-3">  
+                          <span>
+                              {{data.place}}
+                          </span>
+                        </div>
+
+                      </div>
+
+                      <div class="row">
+                        <div style="height: 10px;"></div>
+                      </div>                    
+                      
+                      <div class="row">
+                        <div class="col-md-3">
+                            <span class="btn btn-square btn-light">
+                                Commission:
+                            </span>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <span>
+                                {{data.commission}}
+                            </span>
+                        </div>
+
+                        <div class="col-md-2">
+                            <span class="btn btn-square btn-light">
+                                Price
+                            </span>
+                        </div>
+
+                        <div class="col-md-2">
+                            <span >
+                                {{data.price}}
+                            </span>
+                        </div>
+                          
+                      </div>
+                    </div>
+                    <div class="modal-header">
+                        <div style="text-align: left;">
+                           PRIORITY: <button type="button" class="btn btn-primary active">Cover</button>
+                          </div>
+                        </div>
+                </div>
+            </div>
+        </div>  
+    
+    </div>
+</div>

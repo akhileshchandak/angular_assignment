@@ -1,0 +1,132 @@
+
+<div align="left">
+    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-x"> 
+      <h4>User Page</h4>
+    
+    </div>
+
+<div class="clearfix" align="right">
+  <input type="button" value="Add User" class="btn btn-primary" (click)="openUserModal(true,'add')">
+</div> 
+
+<div class="">	
+  <div class="col-12">
+      
+   <div class="table-responsive shadow padd">
+     <table class="table table-bordered table-striped" style="width:100%">
+        <thead style="background-color:#3396FF">
+            <tr style="color:#FFFFFF;">
+              <th>Name</th>
+              <th>Contact(Whatsapp)</th>
+              <th>City</th>
+              <th>Occupation</th>
+              <th>Wallet Balance</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+     <tbody>
+        <tbody>
+            <tr *ngFor="let data of user_array;  let i = index">
+              
+              <!-- <td><span *ngIf="data.status" style="color:blue;">{{data.name}}</span> <span *ngIf="!data.status" style="color:red;">{{data.name}}</span></td> -->
+              <td *ngIf="data.status" style="color:blue;">{{data.name}}</td>
+              <td *ngIf="!data.status" style="color:blue; background-color:rgb(221, 103, 103);" >{{data.name}}</td>
+              <td *ngIf="!data.status" style="background-color:rgb(221, 103, 103);">{{data.contact}}</td>
+              <td *ngIf="data.status">{{data.contact}}</td>
+              
+              <td *ngIf="!data.status" style="background-color:rgb(221, 103, 103);">{{data.city}}</td>
+              <td *ngIf="data.status">{{data.city}}</td>
+              
+              <td *ngIf="!data.status" style="background-color:rgb(221, 103, 103);">{{data.occupation}}</td>
+              <td *ngIf="data.status">{{data.occupation}}</td>
+
+              <td *ngIf="!data.status" style="background-color:rgb(221, 103, 103);">{{data.walletbalance}}</td>
+              <td *ngIf="data.status">{{data.walletbalance}}</td>
+           
+              <td align="left">
+                  <button class="btn btn-danger btn-outline active" (click)="delete_user_data(i)">De-activate</button>&nbsp; &nbsp;
+               <button class="btn btn-primary btn-outline " (click)="edit_user_data(i)">Edit</button> &nbsp; &nbsp;
+               <span *ngIf="data.walletbalance==null"><button class="btn btn-outline  btn-secondary">Create Wallet</button> </span>
+            </td>
+            </tr>
+        </tbody>
+   </table>
+   </div> 
+       </div>
+       <!-- /.box-body -->
+     </div>
+
+
+<!-- start modal -->
+
+<div class="modal fade" id="add_user" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" data-keyboard="false" data-backdrop="static" [ngStyle]="{'display': mdlUserIsOpen ? 'block' : 'none', 'opacity': 1}">
+  <div class="modal-dialog " role="document">
+      <div class="modal-content" >
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel1">{{title}} User</h4>
+              <button type="button" class="close" (click)="closeUserModal()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+             
+          </div>
+          <div class="modal-body">
+              <form [formGroup] = "userForm">
+            
+                  <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Name" value="" formControlName="name">
+                            <mat-error *ngIf="userForm.controls.name.hasError('required')">
+                              User Name is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Contact" value="" formControlName="contact">
+                              <mat-error *ngIf="userForm.controls.contact.hasError('required')">
+                                  Contact is <strong>required</strong>
+                                </mat-error>
+                          </mat-form-field>
+                      </div>
+                    </div>
+            
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="City" value="" formControlName="city">
+                              <mat-error *ngIf="userForm.controls.city.hasError('required')">
+                                  City is <strong>required</strong>
+                                </mat-error>
+                          </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Occupation" value="" formControlName="occupation">
+                            
+                          </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <mat-form-field class="example-full-width">
+                              <input matInput placeholder="Wallet Balance" value="" formControlName="walletbalance">
+                          
+                          </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                  <div align="center" [hidden]="hide_save">
+                      <button type="button" class="btn btn-rounded btn-info mb-5" (click)="save_user_data()">Save</button>
+                  </div>
+                  <div align="center" [hidden]="hide_update">
+                    <button type="button" class="btn btn-rounded btn-info mb-5" (click)="update_user_data()">Update</button>
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

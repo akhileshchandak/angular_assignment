@@ -1,0 +1,95 @@
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~ngx-toastr/toastr.css';
+ 
+// bootstrap style toast 
+// or import a bootstrap 4 alert styled design (SASS ONLY) 
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions 
+@import '~ngx-toastr/toastr-bs4-alert';
+ 
+// if you'd like to use it without importing all of bootstrap it requires 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+
+
+.large-modal{width:700px !important}
+.input_g{width: 77%;margin-left: 10px; margin-right: 10px;margin: 0 auto;}
+.cdk-overlay-container{
+ z-index: 9999 !important;
+ margin-top: 35px;
+ }
+ .md-select-menu-container {
+     z-index: 99999 !important;
+ }
+ .modal-dialog {
+     -webkit-transform: translate(0,-50%);
+     -o-transform: translate(0,-50%);
+     transform: translate(0,-50%);
+     top: 20%;
+     margin: 0 auto;
+ }
+ /* .modal-header{
+     background-color:rgb(164, 197, 235);
+ } */
+ .modal-content {
+     overflow:hidden;
+ }
+
+ .login-padd {
+    padding-top: 100px;
+    padding-left: 20px;
+    text-align: left;
+  //  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2), 0 2px 2px 2px rgba(0, 0, 0, 0.19);
+ }
+
+ .login-color{
+    background-color:rgb(250, 248, 97);
+    
+ }
+ .bg{
+     background-image: url(../assets/img/back1.jpg);
+    // height: 100%;
+    // width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 34% 72%;
+ }
+ .btns {
+    background-color: white;
+    color: black;
+    padding: 6px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+ }
+ 
+ .dropdown {
+    display: inline-block;
+ }
+ .bb{
+ background-color: red;
+ .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    z-index: 1;
+ }
+ 
+ .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}}
